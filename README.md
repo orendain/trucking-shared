@@ -1,0 +1,1 @@
+# trucking-shared-models
