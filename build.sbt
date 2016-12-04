@@ -1,4 +1,4 @@
-name := "truckingShared"
+name := "trucking-shared"
 
 version := "0.1"
 
@@ -13,3 +13,7 @@ libraryDependencies ++= Seq(
    */
   "org.apache.storm" % "storm-core" % "1.0.2" % "provided"
 )
+
+// TODO: Better way to resolve this specific conflict.
+fork := true
+scalacOptions += "-Yresolve-term-conflict:package"

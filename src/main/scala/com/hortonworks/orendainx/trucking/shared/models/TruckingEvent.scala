@@ -2,7 +2,7 @@ package com.hortonworks.orendainx.trucking.shared.models
 
 import java.sql.Timestamp
 
-import org.apache.storm.tuple.{Tuple, Values}
+import org.apache.storm.tuple.Tuple
 
 /**
   * The model for a trucking event.  Until the data simulator is integrated with a scheme registry, this is the file
@@ -17,7 +17,15 @@ case class TruckingEvent(eventTime: Timestamp, truckId: Int, driverId: Int, driv
   lazy val toText =
     s"${eventTime.getTime}|$truckId|$driverId|$driverName|$routeId|$routeName|$latitude|$longitude|$speed|$eventType"
 
-  lazy val toStormValues =
+  /*
+   * Definition and implicit of type 'Values' that acts as a bridge between Scala and Storm's Java Values
+   */
+  class Values(val args: Any*)
+  implicit def scalaValues2StormValues(v: Values): org.apache.storm.tuple.Values = {
+    new org.apache.storm.tuple.Values(v.args.map(_.toString))
+  }
+
+  lazy val toStormValues: org.apache.storm.tuple.Values =
     new Values(eventTime, truckId, driverId, driverName, routeId, routeName, latitude, longitude, speed, eventType, eventKey)
 }
 
