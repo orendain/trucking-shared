@@ -11,7 +11,7 @@ import org.apache.storm.tuple.Tuple
   * @author Edgar Orendain <edgar@orendainx.com>
   */
 case class TruckingEvent(eventTime: Timestamp, truckId: Int, driverId: Int, driverName: String,
-                         routeId: Int, routeName: String, latitude: Double, longitude: Double,
+                         routeId: Int, routeName: String, latitude: String, longitude: String,
                          speed: Int, eventType: String, eventKey: String = "") extends Event {
 
   lazy val toText =
@@ -38,8 +38,8 @@ object TruckingEvent {
       tuple.getStringByField("driverName"),
       tuple.getIntegerByField("routeId"),
       tuple.getStringByField("routeName"),
-      tuple.getDoubleByField("latitude"),
-      tuple.getDoubleByField("longitude"),
+      tuple.getStringByField("latitude"),
+      tuple.getStringByField("longitude"),
       tuple.getIntegerByField("speed"),
       tuple.getStringByField("eventType"),
       tuple.getStringByField("eventKey"))
