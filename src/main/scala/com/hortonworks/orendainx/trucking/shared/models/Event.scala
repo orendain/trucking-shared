@@ -1,42 +1,17 @@
 package com.hortonworks.orendainx.trucking.shared.models
 
-import org.apache.storm.tuple.Values
-
 /**
-  * The supertype for all models that expect to pass through the simulator.
+  * The supertype for all data models.
   * Extending this type ensures that a data model meets the appropriate requirements and has
-  * the necessary apply/unapply/serialize/deserialize/etc. methods that EventCollectors and other
-  * possible components need to call to transform and act on the data.
-  *
-  * Acts as a lighter alternative to a schema registry.
+  * the necessary apply/unapply/serialize/deserialize/etc. methods that components
+  * may need to call to transform and act on the data.
   *
   * @author Edgar Orendain <edgar@orendainx.com>
   */
 trait Event extends Serializable {
 
   /**
-    * @return A text representation of the data that is appropriate for storage in external sources.
+    * @return A text representation of the data, in CSV format.
     */
-  def toText: String
-
-  /**
-    *
-    * @return The data as an instance of [[Values]]
-    */
-  def toStormValues: Values
-
-  /**
-    * Convenience override.  This method redirects to toText.
-    *
-    * @return the output of a call to toText.
-    */
-  override def toString: String = toText
+  def toCSV: String
 }
-
-/*
- Event states:
- Blueprint Obj (case class)
- Serialized to text (e.g. for file)
- Deserialized (back into case class)
- Transformation (case class transformed into another case class)
- */
