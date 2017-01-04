@@ -2,7 +2,7 @@
 
 Clone, build and publish locally for building other trucking components.
 ```
-git clone https://githb.com/orendain/trucking-shared
+git clone https://github.com/orendain/trucking-shared
 cd trucking-shared
 sbt publishLocal
 ```
