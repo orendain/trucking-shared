@@ -9,7 +9,9 @@ import java.sql.Timestamp
   */
 case class TruckEvent(eventTime: Timestamp, truckId: Int, driverId: Int, driverName: String,
                       routeId: Int, routeName: String, latitude: String, longitude: String,
-                      speed: Int, eventType: String, eventKey: String = "") extends TruckingData {
+                      speed: Int, eventType: String) extends TruckingData {
+
+  val name = "TruckEvent"
 
   lazy val toCSV =
     s"${eventTime.getTime}|$truckId|$driverId|$driverName|$routeId|$routeName|$latitude|$longitude|$speed|$eventType"

@@ -11,6 +11,11 @@ package com.hortonworks.orendainx.trucking.shared.models
 trait TruckingData extends Serializable {
 
   /**
+    * @return The name of this data type.
+    */
+  val name: String
+
+  /**
     * @return A text representation of the data, in CSV format.
     */
   def toCSV: String
