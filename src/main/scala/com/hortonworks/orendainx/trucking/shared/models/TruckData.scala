@@ -9,8 +9,5 @@ case class TruckData(eventTime: Long, truckId: Int, driverId: Int, driverName: S
                      routeId: Int, routeName: String, latitude: Double, longitude: Double,
                      speed: Int, eventType: String) extends TruckingData {
 
-  val typeName = "TruckData"
-
-  lazy val toCSV =
-    s"$eventTime|$truckId|$driverId|$driverName|$routeId|$routeName|$latitude|$longitude|$speed|$eventType"
+  lazy val toCSV = s"$eventTime|$truckId|$driverId|$driverName|$routeId|$routeName|$latitude|$longitude|$speed|$eventType"
 }

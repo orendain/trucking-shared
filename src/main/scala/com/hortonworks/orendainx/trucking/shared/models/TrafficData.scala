@@ -5,6 +5,5 @@ package com.hortonworks.orendainx.trucking.shared.models
   */
 case class TrafficData(eventTime: Long, routeId: Int, congestionLevel: Int) extends TruckingData {
 
-  val typeName = "TrafficData"
   lazy val toCSV = s"$eventTime|$routeId|$congestionLevel"
 }
