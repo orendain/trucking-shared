@@ -1,6 +1,6 @@
 name := "trucking-shared"
 
-version := "0.3"
+version := "0.3.1"
 
 organization := "com.hortonworks.orendainx"
 

@@ -13,10 +13,10 @@ trait TruckingData extends Serializable {
   /**
     * @return The name of this data type.
     */
-  val name: String
+  val typeName: String
 
   /**
-    * @return A text representation of the data, in CSV format.
+    * @return A text representation of the data, in CSV format ('|' delimited).
     */
   def toCSV: String
 }
